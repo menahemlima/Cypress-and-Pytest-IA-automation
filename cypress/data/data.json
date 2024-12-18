@@ -1,0 +1,34 @@
+{
+    "valores": {
+        "muitoPos": "today I'm happy",
+        "levemPos": "little a bit happy",
+        "neutro": "I am a dreamer",
+        "levemNeg": "He is angry",
+        "muitoNeg": "Very sad on morning",
+        "invalido": "/*-+!@#$!"
+    },
+    "validacoes": {
+        "MPositivo": "'Sentimento identificado': 'Muito Positivo'",
+        "LPositivo": "'Sentimento identificado': 'Levemente Positivo'",
+        "Neutro": "'Sentimento identificado': 'Neutro'",
+        "LNegativo": "'Sentimento identificado': 'Levemente Negativo'",
+        "MNegativo": "'Sentimento identificado': 'Muito Negativo'",
+        "Invalido": "'Sentimento identificado': 'Texto Inválido'"
+    },
+    "apiValidacoes": {
+        "MPositivo": "Muito Positivo",
+        "LPositivo": "Levemente Positivo",
+        "Neutro": "Neutro",
+        "LNegativo": "Levemente Negativo",
+        "MNegativo": "Muito Negativo",
+        "Invalido": "Texto Inválido"
+    },
+    "limites": {
+        "Pos06": "Spectacular",
+        "Pos05": "Fantastic",
+        "Pos04": "fabulous",
+        "Neg06": "Disappointing",
+        "Neg05": "Mediocre",
+        "Neg04": "Irritating"
+    }
+}

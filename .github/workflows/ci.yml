@@ -1,0 +1,107 @@
+name: Suite de testes ML
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  testes_modeloML:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Verificar o repositório
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependencias do Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Instalar dependencias do Node.js
+        run: npm install -f
+
+      - name: Instalar K6
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnupg software-properties-common
+          curl -s https://dl.k6.io/key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/k6-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Inicializar a aplicacao Python
+        run: |
+          nohup python app/aplicativo.py &
+        env:
+          PORT: 5000
+
+      - name: Verificar se a aplicacao esta rodando
+        run: |
+          for i in {1..30}; do
+            if curl --silent --fail http://localhost:5000; then
+              echo "Aplicação está pronta!"
+              break
+            fi
+            echo "Esperando a aplicação iniciar..."
+            sleep 2
+          done
+          if ! curl --silent --fail http://localhost:5000; then
+            echo "A aplicação não iniciou a tempo."
+            exit 1
+          fi
+
+      - name: Executar testes Web e Api com Cypress
+        run: npx cypress run
+
+      - name: Gerar relatorio de testes com Mochawesome
+        run: |
+          node merge-report.js
+          npx mochawesome-report-generator report.json --reportDir cypress/mochawesome-report
+
+      - name: Salvar relatorio dos testes Cypress
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-results
+          path: cypress/mochawesome-report
+          if-no-files-found: ignore
+
+      - name: Executar testes de performance com K6
+        run: |
+          k6 run tests/k6/load_test.js --out json=test.json
+
+      - name: Salvar relatorio dos testes K6
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-results
+          path: k6_report.html
+          if-no-files-found: error
+
+      - name: Executar testes de desempenho do modelo com Pytest
+        run: |
+          mkdir -p pytest-reports
+          py.test tests/metrics/test_metrics.py --html=pytest-reports/pytest_report.html --self-contained-html
+
+      - name: Salvar relatório dos testes Pytest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results
+          path: pytest-reports/pytest_report.html
+          if-no-files-found: error

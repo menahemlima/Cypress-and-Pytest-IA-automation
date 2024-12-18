@@ -1,0 +1,6 @@
+node_modules
+cypress/screenshots
+mochawesome-report
+report.json
+tests/metrics/__pycache__
+tests/metrics/.paytest_cache

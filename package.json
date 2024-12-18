@@ -1,0 +1,22 @@
+{
+  "name": "cypress-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "keywords": [],
+  "author": "Menahem Lima - QA",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.16.1"
+  },
+  "dependencies": {
+    "cypress-multi-reporters": "^2.0.4",
+    "mocha": "^11.0.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
+}
