@@ -44,7 +44,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y k6
 
-      - name: Inicializar a aplicacao Python
+      - name: Inicializar a aplicacao Flask
         run: |
           nohup python app/aplicativo.py &
         env:
@@ -52,7 +52,7 @@ jobs:
 
       - name: Verificar se a aplicacao esta rodando
         run: |
-          for i in {1..30}; do
+          for i in {1..10}; do
             if curl --silent --fail http://localhost:5000; then
               echo "Aplicação está pronta!"
               break
