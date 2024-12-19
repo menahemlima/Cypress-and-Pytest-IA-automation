@@ -229,9 +229,9 @@ sudo apt install -y k6
     
 ## Screenshots
 
-[Tela Web - Front de análise de predições ](https://github.com/matiassingers/awesome-readme)
+[Tela Web - Front de análise de predições ](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/web.png)
 
-[Tela API - Endpoint de análise de predições](https://github.com/matiassingers/awesome-readme)
+[Tela API - Endpoint de análise de predições](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/api.png)
 
 ## Execução dos testes Cypress
 
