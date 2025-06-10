@@ -229,9 +229,9 @@ sudo apt install -y k6
     
 ## Screenshots
 
-[Tela Web - Front de análise de predições ](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/web.png)
+[Tela Web - Front de análise de predições ](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/web.png)
 
-[Tela API - Endpoint de análise de predições](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/api.png)
+[Tela API - Endpoint de análise de predições](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/api.png)
 
 ## Execução dos testes Cypress
 
@@ -253,13 +253,13 @@ sudo apt install -y k6
    ```
 2. Abra o arquivo `report.html` no diretório `cypress/mochawesome-report` usando qualquer navegador.
 #### Diretório
-![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_estrutura.png)
+![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/cypress_estrutura.png)
 
 #### Relatório Cypress
 
-![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_result01.png)
+![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/cypress_result01.png)
 
-![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_result02.png)
+![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/cypress_result02.png)
 
 
 ## Execução dos testes benchmarking com K6
@@ -268,7 +268,7 @@ sudo apt install -y k6
    ```bash
    cd C:\Users\{NAMEUSER \Documents\Cypress-and-Pytest-IA-automation\tests\k6
    ```
-   ![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_estrutura.png)
+   ![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/k6_estrutura.png)
 2. Execute o comando:
    ```bash
    k6 run load_test.js --out json=test.json
@@ -277,9 +277,9 @@ sudo apt install -y k6
 
 #### Relatório dos testes K6
 
-![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_result01.png)
+![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/k6_result01.png)
 
-![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_result02.png)
+![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/k6_result02.png)
 
 
 ## Execução dos testes benchmarking no modelo ML com Pytest
@@ -288,7 +288,7 @@ sudo apt install -y k6
    ```bash
    cd  C:\Users\{NAMEUSER}\Documents\Cypress-and-Pytest-IA-automation\tests\metrics
    ```
-   ![diretorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_estrutura.png)
+   ![diretorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/pytest_estrutura.png)
 2. Execute o comando:
    ```bash
    py.test test_metrics.py --html=pytest-reports/pytest_report.html --self-contained-html
@@ -297,14 +297,14 @@ sudo apt install -y k6
 
 #### Relatórios Pytest
 
-![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_result01.png)
+![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/pytest_result01.png)
 
-![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_result02.png)
+![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/pytest_result02.png)
 
 ## Relatórios no Github
 
 Após a execução do pipeline no github as evidências dos testes ficam salvas na aba `Actions` > `Suite de testes ML` > `Projeto de testes - Machine Learning` 
-veja o print [aqui](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/github_artifacts.png).
+veja o print [aqui](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/github_artifacts.png).
 
 # Configuração da Pipeline CI/CD – GitHub Actions
 
@@ -390,14 +390,14 @@ Ao testar o modelo com um conjunto de dados contendo 400 frases, cada uma com ma
 
 #### Test metrics_failed
 
-![test_metrics_failed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/metrics_fail.png)
+![test_metrics_failed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/metrics_fail.png)
 
 Ao simplificar o dataset para frases com até 2 palavras e expandir para 1000 registros, o modelo apresentou um desempenho consistente, alcançando métricas satisfatórias:
 A matriz de confusão revela uma boa capacidade de classificação, com um número reduzido de erros em relação ao total de previsões, especialmente para classes bem representadas. Esses resultados indicam que a simplificação do escopo e o aumento do volume de dados permitiram ao modelo generalizar de forma mais eficiente em contextos menos complexos.
 
 #### Test metrics_passed
 
-![test_metrics_passed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/metrics_pass.png)
+![test_metrics_passed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/main/images/metrics_pass.png)
 
 O modelo, conforme mencionado anteriormente, apresenta bom desempenho apenas quando o contexto da previsão é simples. Em cenários mais complexos, é recomendável considerar modelos mais avançados disponíveis no mercado, como **VADER** ou **BERT**, que são projetados para lidar com maior complexidade sem perder a precisão.
 
