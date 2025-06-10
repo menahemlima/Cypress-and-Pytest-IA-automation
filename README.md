@@ -1,5 +1,5 @@
 
-# Projeto Machine Learning - PremierSoft
+# Projeto de automação Machine Learning
 
 Projeto de Testes para validação do modelo de Machine Learning TextBlob com o uso de frameworks de automação, como Cypress, K6 e PyTest. Foi necessário desenvolver um aplicativo Flask para executar tanto o aplicativo web quanto a API, permitindo validar diferentes cenários nesses ambientes.
 
@@ -182,13 +182,13 @@ sudo apt install nodejs -y
 ### Clonar o repositório
 Clone o repositório utilizando o comando:
 ```bash
-git clone https://github.com/menahemlima/desafio_machine_learning
+git clone https://github.com/menahemlima/Cypress-and-Pytest-IA-automation
 ```
 
 ### Instalar as dependências do Python
 1. Acesse o diretório do projeto:
    ```bash
-   cd C:\Users\{NAMEUSER}\Documents\desafio_machine_learning
+   cd C:\Users\{NAMEUSER}\Documents\Cypress-and-Pytest-IA-automation
    ```
 2. Execute o comando:
    ```bash
@@ -198,7 +198,7 @@ git clone https://github.com/menahemlima/desafio_machine_learning
 ### Instalar as dependências do Node.js
 1. Acesse o diretório do projeto:
    ```bash
-   cd C:\Users\{NAMEUSER}\Documents\desafio_machine_learning
+   cd C:\Users\{NAMEUSER}\Documents\Cypress-and-Pytest-IA-automation
    ```
 2. Execute o comando:
    ```bash
@@ -229,15 +229,15 @@ sudo apt install -y k6
     
 ## Screenshots
 
-[Tela Web - Front de análise de predições ](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/web.png)
+[Tela Web - Front de análise de predições ](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/web.png)
 
-[Tela API - Endpoint de análise de predições](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/api.png)
+[Tela API - Endpoint de análise de predições](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/api.png)
 
 ## Execução dos testes Cypress
 
 1. Dentro da pasta:
    ```bash
-   cd C:\Users\{NAMEUSER}\Documents\desafio_machine_learning
+   cd C:\Users\{NAMEUSER}\Documents\Cypress-and-Pytest-IA-automation
    ```
 2. Execute o comando:
    ```bash
@@ -253,42 +253,42 @@ sudo apt install -y k6
    ```
 2. Abra o arquivo `report.html` no diretório `cypress/mochawesome-report` usando qualquer navegador.
 #### Diretório
-![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/cypress_estrutura.png)
+![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_estrutura.png)
 
 #### Relatório Cypress
 
-![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/cypress_result01.png)
+![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_result01.png)
 
-![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/cypress_result02.png)
+![relatorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/cypress_result02.png)
 
 
 ## Execução dos testes benchmarking com K6
 
 1. Dentro da pasta:
    ```bash
-   cd C:\Users\{NAMEUSER \Documents\desafio_machine_learning\tests\k6
+   cd C:\Users\{NAMEUSER \Documents\Cypress-and-Pytest-IA-automation\tests\k6
    ```
-   ![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/k6_estrutura.png)
+   ![diretorio_cypress](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_estrutura.png)
 2. Execute o comando:
    ```bash
-   k6 run k6_report.js --out json=test.json
+   k6 run load_test.js --out json=test.json
    ```
 3. Abra o arquivo `k6_report.html` no diretório usando qualquer navegador.
 
 #### Relatório dos testes K6
 
-![relatorio_k6](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/k6_result01.png)
+![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_result01.png)
 
-![relatorio_k6](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/k6_result02.png)
+![relatorio_k6](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/k6_result02.png)
 
 
 ## Execução dos testes benchmarking no modelo ML com Pytest
 
 1. Dentro da pasta:
    ```bash
-   cd  C:\Users\{NAMEUSER}\Documents\desafio_machine_learning\tests\metrics
+   cd  C:\Users\{NAMEUSER}\Documents\Cypress-and-Pytest-IA-automation\tests\metrics
    ```
-   ![diretorio_pytest](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/pytest_estrutura.png)
+   ![diretorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_estrutura.png)
 2. Execute o comando:
    ```bash
    py.test test_metrics.py --html=pytest-reports/pytest_report.html --self-contained-html
@@ -297,14 +297,14 @@ sudo apt install -y k6
 
 #### Relatórios Pytest
 
-![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/pytest_result01.png)
+![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_result01.png)
 
-![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/pytest_result02.png)
+![relatorio_pytest](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/pytest_result02.png)
 
 ## Relatórios no Github
 
 Após a execução do pipeline no github as evidências dos testes ficam salvas na aba `Actions` > `Suite de testes ML` > `Projeto de testes - Machine Learning` 
-veja o print [aqui](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/github_artifacts.png).
+veja o print [aqui](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/github_artifacts.png).
 
 # Configuração da Pipeline CI/CD – GitHub Actions
 
@@ -390,14 +390,14 @@ Ao testar o modelo com um conjunto de dados contendo 400 frases, cada uma com ma
 
 #### Test metrics_failed
 
-![test_metrics_failed](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/metrics_fail.png)
+![test_metrics_failed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/metrics_fail.png)
 
 Ao simplificar o dataset para frases com até 2 palavras e expandir para 1000 registros, o modelo apresentou um desempenho consistente, alcançando métricas satisfatórias:
 A matriz de confusão revela uma boa capacidade de classificação, com um número reduzido de erros em relação ao total de previsões, especialmente para classes bem representadas. Esses resultados indicam que a simplificação do escopo e o aumento do volume de dados permitiram ao modelo generalizar de forma mais eficiente em contextos menos complexos.
 
 #### Test metrics_passed
 
-![test_metrics_passed](https://raw.githubusercontent.com/menahemlima/desafio_machine_learning/refs/heads/main/images/metrics_pass.png)
+![test_metrics_passed](https://raw.githubusercontent.com/menahemlima/Cypress-and-Pytest-IA-automation/refs/heads/main/images/metrics_pass.png)
 
 O modelo, conforme mencionado anteriormente, apresenta bom desempenho apenas quando o contexto da previsão é simples. Em cenários mais complexos, é recomendável considerar modelos mais avançados disponíveis no mercado, como **VADER** ou **BERT**, que são projetados para lidar com maior complexidade sem perder a precisão.
 
