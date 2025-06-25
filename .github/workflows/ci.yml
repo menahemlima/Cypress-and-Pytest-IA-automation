@@ -45,8 +45,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y k6
 
-  ---
-
   run_cypress_tests:
     runs-on: ubuntu-latest
     needs: setup_build_environment # Garante que o ambiente esteja configurado
@@ -108,8 +106,6 @@ jobs:
           path: cypress/mochawesome-report
           if-no-files-found: ignore
 
-  ---
-
   run_k6_performance_tests:
     runs-on: ubuntu-latest
     needs: setup_build_environment
@@ -158,8 +154,6 @@ jobs:
           name: k6-results
           path: k6_report.html
           if-no-files-found: error
-
-  ---
 
   run_pytest_ml_metrics:
     runs-on: ubuntu-latest
