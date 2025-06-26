@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Reutilizar configuração
-        uses: ./.github/actions/setup-env
+        uses: ./.github/actions/setup
 
       - name: Iniciar Flask App
         run: nohup python app/aplicativo.py &
@@ -137,7 +137,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Reutilizar configuração
-        uses: ./.github/actions/setup-env
+        uses: ./.github/actions/setup
 
       - name: Executar teste do modelo ML no Pytest
         run: |
