@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do código
+      - name: Code Checkout
         uses: actions/checkout@v4
 
   install_dependencies:
@@ -23,38 +23,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Instalar dependências Python
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Instalar dependências Node.js
-        run: npm install -f
+      - name: Reutilizar configuração
+        uses: ./.github/actions/setup
 
   cypress_tests:
     needs: install_dependencies
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Reutilizar configuração
+        uses: ./.github/actions/setup
 
-      - name: Iniciar Flask App
+      - name: Start Flask App
         run: nohup python app/aplicativo.py &
         env:
           PORT: ${{ env.PORT }}
 
-      - name: Aguardar disponibilidade do Flask App
+      - name: Wait Flask
         run: |
           for i in {1..10}; do
             if curl --silent --fail http://localhost:${{ env.PORT }}; then
@@ -65,15 +50,15 @@ jobs:
           done
           curl --silent --fail http://localhost:${{ env.PORT }} || (echo "App failed to start" && exit 1)
 
-      - name: Executar testes Cypress
+      - name: Run Cypress
         run: npx cypress run
 
-      - name: Gerar relatório do Cypress
+      - name: Report Cypress
         run: |
           node merge-report.js
           npx mochawesome-report-generator report.json --reportDir cypress/mochawesome-report
 
-      - name: Upload do relatório Cypress
+      - name: Generate report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -85,8 +70,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Reutilizar configuração
+        uses: ./.github/actions/setup
 
-      - name: Instalar K6
+      - name: Install K6
         run: |
           sudo apt-get update
           sudo apt-get install -y gnupg software-properties-common
@@ -95,12 +82,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y k6
 
-      - name: Iniciar Flask App para K6
+      - name: Start Flask App for K6
         run: nohup python app/aplicativo.py &
         env:
           PORT: ${{ env.PORT }}
 
-      - name: Aguardar disponibilidade do Flask App
+      - name: Wait Flask App
         run: |
           for i in {1..10}; do
             if curl --silent --fail http://localhost:${{ env.PORT }}; then
@@ -111,10 +98,10 @@ jobs:
           done
           curl --silent --fail http://localhost:${{ env.PORT }} || exit 1
 
-      - name: Executar testes do K6
+      - name: Run K6
         run: k6 run tests/k6/load_test.js --out json=test.json
 
-      - name: Upload do relatório K6
+      - name: Generate K6 report
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -126,13 +113,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Reutilizar configuração
+        uses: ./.github/actions/setup
 
-      - name: Executar teste do modelo ML no Pytest
+      - name: Run Pytest
         run: |
           mkdir -p pytest-reports
           pytest tests/metrics/test_metrics.py --html=pytest-reports/pytest_report.html --self-contained-html
 
-      - name: Upload do relatório Pytest
+      - name: Generate Pytest report
         if: always()
         uses: actions/upload-artifact@v4
         with:
