@@ -103,8 +103,10 @@ jobs:
 
       - name: Install k6-reporter and generate HTML
         run: |
-          curl -L https://raw.githubusercontent.com/mjl-/k6-to-html/main/k6-to-html.js -o k6-to-html.js
-          node k6-to-html.js k6-summary.json > k6-report.html
+          curl -L https://raw.githubusercontent.com/grafana/k6-summary-html/main/dist/summary-html.js -o summary-html.js
+
+      - name: Generate HTML report from summary
+        run: node summary-html.js k6-summary.json > k6-report.html
 
       - name: Upload K6 HTML Report
         if: always()
