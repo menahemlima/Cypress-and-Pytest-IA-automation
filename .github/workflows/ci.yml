@@ -99,12 +99,12 @@ jobs:
           curl --silent --fail http://localhost:${{ env.PORT }} || exit 1
 
       - name: Run K6
-        run: k6 run tests/k6/load_test.js --out json=test.json
+        run: k6 run tests/k6/load_test.js --summary-export=k6-summary.json
 
       - name: Install k6-reporter and generate HTML
         run: |
-          npm install -g k6-reporter
-          k6-reporter k6-report.json
+          npm install -g k6-summary-html
+          k6-summary-html k6-summary.json > k6-report.html
 
       - name: Upload K6 HTML Report
         if: always()
