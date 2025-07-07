@@ -101,11 +101,16 @@ jobs:
       - name: Run K6
         run: k6 run tests/k6/load_test.js --out json=test.json
 
-      - name: Generate K6 report
+      - name: Install k6-reporter and generate HTML
+        run: |
+          npm install -g k6-reporter
+          k6-reporter k6-report.json
+
+      - name: Upload K6 HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k6-results
+          name: k6-html-report
           path: k6_report.html
 
   pytest_metrics:
