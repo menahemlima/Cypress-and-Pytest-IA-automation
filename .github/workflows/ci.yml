@@ -99,14 +99,14 @@ jobs:
           curl --silent --fail http://localhost:${{ env.PORT }} || exit 1
 
       - name: Executar testes de performance com K6
-        run: k6 run tests/k6/load_test.js --summary-export=k6-summary.json
+        run: k6 run tests/k6/load_test.js
 
       - name: Save K6 report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k6-summary
-          path: k6-summary.json
+          name: k6-html-report
+          path: k6_report.html
           if-no-files-found: error
 
   pytest_metrics:
