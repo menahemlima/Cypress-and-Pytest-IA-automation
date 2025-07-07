@@ -103,8 +103,8 @@ jobs:
 
       - name: Install k6-reporter and generate HTML
         run: |
-          npm install -g k6-summary-html
-          k6-summary-html k6-summary.json > k6-report.html
+          curl -L https://raw.githubusercontent.com/szboynono/k6-reporter/main/src/k6-reporter.js -o k6-reporter.js
+          node k6-reporter.js k6-summary.json > k6-report.html
 
       - name: Upload K6 HTML Report
         if: always()
