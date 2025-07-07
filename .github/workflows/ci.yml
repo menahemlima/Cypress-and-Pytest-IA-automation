@@ -103,15 +103,15 @@ jobs:
 
       - name: Install k6-reporter and generate HTML
         run: |
-          curl -L https://raw.githubusercontent.com/szboynono/k6-reporter/main/src/k6-reporter.js -o k6-reporter.js
-          node k6-reporter.js k6-summary.json > k6-report.html
+          curl -L https://raw.githubusercontent.com/mjl-/k6-to-html/main/k6-to-html.js -o k6-to-html.js
+          node k6-to-html.js k6-summary.json > k6-report.html
 
       - name: Upload K6 HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: k6-html-report
-          path: k6_report.html
+          path: k6-report.html
 
   pytest_metrics:
     needs: install_dependencies
