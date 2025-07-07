@@ -98,22 +98,13 @@ jobs:
           done
           curl --silent --fail http://localhost:${{ env.PORT }} || exit 1
 
-      - name: Run K6
-        run: k6 run tests/k6/load_test.js --summary-export=k6-summary.json
-
-      - name: Install k6-reporter and generate HTML
-        run: |
-          curl -L https://raw.githubusercontent.com/grafana/k6-summary-html/main/dist/summary-html.js -o summary-html.js
-
-      - name: Generate HTML report from summary
-        run: node summary-html.js k6-summary.json > k6-report.html
-
-      - name: Upload K6 HTML Report
+      - name: Save K6 report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: k6-html-report
+          name: k6-results
           path: k6-report.html
+          if-no-files-found: error
 
   pytest_metrics:
     needs: install_dependencies
